@@ -1,0 +1,3 @@
+spring:  application:    name: product-info-service
+server:
+  port: 6060
