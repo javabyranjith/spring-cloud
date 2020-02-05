@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: product-rating-service
+
+server:
+  port: 7070
