@@ -1,2 +1,6 @@
+spring:
+  application:
+    name: user-wishlist-service
+
 server:
   port: 5050

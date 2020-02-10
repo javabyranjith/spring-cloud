@@ -35,9 +35,9 @@ public class WishlistController {
     return products.stream()
         .map(prod ->
           {
-            Product product = restTemplate.getForObject("http://localhost:6060/product/info/" + prod.getId(),
+            Product product = restTemplate.getForObject("http://product-info-service/product/info/" + prod.getId(),
                 Product.class);
-            Rating rating = restTemplate.getForObject("http://localhost:7070/product/rating/" + prod.getId(),
+            Rating rating = restTemplate.getForObject("http://product-rating-service/product/rating/" + prod.getId(),
                 Rating.class);
 
             return new Wishlist(prod.getId(), product.getName(), product.getPrice(), rating.getRating());
@@ -46,7 +46,7 @@ public class WishlistController {
   }
 
   private List<Product> way2(String userid) {
-    ResponseEntity<List<Product>> response = restTemplate.exchange("http://localhost:6060/product/" + userid,
+    ResponseEntity<List<Product>> response = restTemplate.exchange("http://product-info-service/product/" + userid,
         HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>() {
         });
     return response.getBody();
